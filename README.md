@@ -1,4 +1,4 @@
-# empty_package
+# rae_bluetooth
 
 This is a template kit (with */example*) to create a Flutter Package.
 
@@ -16,15 +16,15 @@ The package also contains an ad-hoc */example* folder with an app designed to lo
 
 - After un-ziping, rename the folder from _template_package to "new name"
 
-- Rename 'lib/*empty_package.dart*' to the "new package name" (eg custom_widget_package.dart)
+- Rename 'lib/*rae_bluetooth.dart*' to the "new package name" (eg custom_widget_package.dart)
 
-- Open the project in IDE of choice and search/replace "*empty_package*" with "new package name". This 100% works using VSCode.
+- Open the project in IDE of choice and search/replace "*rae_bluetooth*" with "new package name". This 100% works using VSCode.
 
-- Search/Replace '*replace_domain*' with project/company domain.
+- Search/Replace '*raehealth*' with project/company domain.
 
 #### NOTE
 
-***replace_domain** will be part of the reverse domain used by XCode and Android in the app/product name. Choose carefully!*
+***raehealth** will be part of the reverse domain used by XCode and Android in the app/product name. Choose carefully!*
 
 ### Optional action for **localization**
 

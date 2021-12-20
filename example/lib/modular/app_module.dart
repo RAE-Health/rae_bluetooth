@@ -13,6 +13,6 @@ class AppModule extends Module {
   // Provide all the routes for your module
   @override
   final List<ModularRoute> routes = [
-    ChildRoute('/', child: (_, __) => ScaffoldWidget(title: 'empty_package')),
+    ChildRoute('/', child: (_, __) => ScaffoldWidget(title: 'rae_bluetooth')),
   ];
 }

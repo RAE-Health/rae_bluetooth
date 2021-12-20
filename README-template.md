@@ -1,4 +1,4 @@
-# empty_package
+# rae_bluetooth
 
 This is a template for the README.md. Replace the *README.md* with this, and fill in empty/missing details.
 
@@ -6,7 +6,7 @@ This is a template for the README.md. Replace the *README.md* with this, and fil
 
 ```text
 dependencies:
-  empty_package:
+  rae_bluetooth:
     git:
       url: {url of github repo}
 ```
@@ -14,7 +14,7 @@ dependencies:
 ## Import
 
 ```dart
-import 'package:empty_packge/empty_package.dart';
+import 'package:empty_packge/rae_bluetooth.dart';
 ```
 
 ## Usage

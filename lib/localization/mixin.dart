@@ -7,7 +7,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/package_localizations.dart';
 
-import '../empty_package.dart';
+import '../rae_bluetooh.dart';
 
 mixin DictionaryEnumMixin {
   String lookup(DictionaryEnum item, {required BuildContext of}) {

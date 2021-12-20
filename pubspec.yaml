@@ -1,4 +1,4 @@
-name: empty_package # search/replace all occurances of 'empty_package' to the new package name
+name: rae_bluetooth # search/replace all occurances of 'rae_bluetooth' to the new package name
 description: Template for Flutter Package project.
 version: 0.0.7+2
 homepage: http://www.raehealth.com

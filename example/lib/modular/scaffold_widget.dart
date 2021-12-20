@@ -1,7 +1,7 @@
-import 'package:empty_package/empty_package.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_extras/flutter_extras.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:rae_bluetooth/rae_bluetooth.dart';
 import 'package:theme_manager/theme_manager.dart';
 import 'package:xample/cubit/locale_cubit.dart';
 import 'package:xample/l10n/mixin.dart';

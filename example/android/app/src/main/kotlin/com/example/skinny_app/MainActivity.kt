@@ -1,4 +1,4 @@
-package com.replace_domain.empty_package
+package com.raehealth.rae_bluetooth
 
 import io.flutter.embedding.android.FlutterActivity
 
