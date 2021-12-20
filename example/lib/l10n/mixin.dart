@@ -4,9 +4,9 @@
 // should disappear
 //*********************************************************************************
 
-import 'package:empty_package/empty_package.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:rae_bluetooth/rae_bluetooth.dart';
 
 mixin DictionaryEnumMixin {
   String lookup(DictionaryEnum item, {required BuildContext of}) {
