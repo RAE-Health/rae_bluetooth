@@ -53,5 +53,13 @@
 	</array>
 	<key>NSLocalNetworkUsageDescription</key>
 	<string>Allow Flutter tools to connect to debug your application</string>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>Needed to connect biometric device</string>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>Needed to connect biometric device</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>bluetooth-central</string>
+	</array>
 </dict>
 </plist>
