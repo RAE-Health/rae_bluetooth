@@ -31,6 +31,8 @@ class _ScaffoldWidget extends ObservingStatefulWidget<ScaffoldWidget> with Dicti
         body: _body(context),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
+            final cubit = Modular.get<BluetoothCubit>();
+            cubit.getBluetoothStatus();
             setState(() {
               isFirst = !isFirst;
             });

@@ -1,87 +1,44 @@
 # rae_bluetooth
 
-This is a template kit (with */example*) to create a Flutter Package.
+This is a template for the README.md. Replace the *README.md* with this, and fill in empty/missing details.
 
-The template project is a great foundation for creating packages that uses with BLoC and Modular programming patterns.
+## Install
 
-The package also contains an ad-hoc */example* folder with an app designed to load the new package and quickly allow the developer to create a demo/POC/beta-sample.
-
-**^^The */example* that creates an app is also a great foundation for an app beyond development and proof-of-concept(POC)**
-
----
-
-## Setup
-
-### Changes to content of template
-
-- After un-ziping, rename the folder from _template_package to "new name"
-
-- Rename 'lib/*rae_bluetooth.dart*' to the "new package name" (eg custom_widget_package.dart)
-
-- Open the project in IDE of choice and search/replace "*rae_bluetooth*" with "new package name". This 100% works using VSCode.
-
-- Search/Replace '*raehealth*' with project/company domain.
-
-#### NOTE
-
-***raehealth** will be part of the reverse domain used by XCode and Android in the app/product name. Choose carefully!*
-
-### Optional action for **localization**
-
-- [Optional] Search/Replace '*DictionaryEnum*' with a name better suited for your app's vocabulary
-
-- Localization: At the root of the template is **/l10n**, within are **.arb** files with the localization key/value pairs. On **flutter pub get** the localization files will be generated in both the *packge* AND */example* space. There are **mixin.dart** files in both spaces that provide a **lookup** mixin, that uses the vales of ***DictionaryEnum*** to get localized text
-
-### **Important**: Make these ***Setup*** changes your initial comment to version control before proceeding
-
-&nbsp;
-&nbsp;
-
----
-&nbsp;
-
-## After setup & commit to version control
-
-- Review and update the *README-template.md*
-
-- Delete the *README.md*
-
-- Rename *README-template.md* to *README.md*
-
-- Begin coding.
-
-### Note
-
-- The code in the */example* folder produces an app called Dem0App *Note the zero(0) in the name*
-
-- The */example* app has:
-
-1. A use case for ThemeManager for dark/light theme design
-2. An example of dark/light switching via a button in the upper right corner
-3. Localization using the package level */l10n .arb* files for localation key/values for shared use by both the package and *Dem0App*
-
-- Localization can have errors after *flutter pub get* in how the l10n.yaml file is skipped because of ***bug*** during the flutter the build.
-
-```dart
-//*********************************************************************************
-// If errors like 'Traget URI doesn't...' or 'Undefined name 'AppLocalizations'
-// try 'flutter pub get' once more (or twice), or just run the app and they
-// should disappear
-//*********************************************************************************
+```text
+dependencies:
+  rae_bluetooth:
+    git:
+      url: {url of github repo}
 ```
 
-## Useage
+## Import
 
-The 'example' directory is an app that includes:
+```dart
+import 'package:empty_packge/rae_bluetooth.dart';
+```
 
-- Usage of [flutter_block](https://pub.dev/packages/flutter_bloc)
+## iOS Settings
 
-- Usage of [flutter_modular](https://pub.dev/packages/flutter_modular)
+```text
+info.plist
+ Privacy - Bluetooth Always Usage Description       "Reason to use bluetooth always"
+ Privacy - Bluetooth Peripheral Usage Description   "Reason to use bluetooth"
+ > Required background modes
+    Item 0                                          App communicates using CoreBluetooth
 
-- Localizations using [intl](https://pub.dev/packages/intl)
+info.plist as keys:
+  NSBluetoothAlwaysUsageDescription                 "Reason to use bluetooth always"
+  NSBluetoothPeripheralUsageDescription             "Reason to use bluetooth"
+  > UIBackgroundModes
+     Item 0                                         bluetooth-central
+```
 
-- User settable Light/Dark mode using [ThemeManager](https://github.com/GitHubStuff/theme_manager) {Tap the light-bulb in the upper right corner}
+### NOTE
 
-## Final note
+"**Reason to use bluetooth always**", "**Reason to use bluetooth**" text that appears in system prompts
 
-Be kind to each other!
+Provide details/examples on usage.
+
+## Final Note
+
+Be kind to each other

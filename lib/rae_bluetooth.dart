@@ -3,3 +3,4 @@
 library rae_bluetooth;
 
 export 'src/dictionary_enum.dart';
+export 'src/cubit/bluetooth_cubit.dart';
