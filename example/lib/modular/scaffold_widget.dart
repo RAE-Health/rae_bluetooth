@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_extras/flutter_extras.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:rae_bluetooth/rae_bluetooth.dart';
@@ -19,6 +20,19 @@ class _ScaffoldWidget extends ObservingStatefulWidget<ScaffoldWidget> with Dicti
   String instruction = 'Tap + to change the text';
   String instruction2 = 'Tap again';
   bool isFirst = true;
+  static const bleState = MethodChannel('bleState.fetch.flutter/state');
+
+  Future<void> _getBLEState() async {
+    String state;
+    try {
+      final String result = await bleState.invokeMethod('bleState');
+      state = result;
+    } on PlatformException catch (e) {
+      debugPrint('Failed to get state ${e.message}');
+      state = '?';
+    }
+    debugPrint('STATE $state');
+  }
 
   @override
   Widget build(BuildContext context) => Scaffold(
@@ -30,7 +44,8 @@ class _ScaffoldWidget extends ObservingStatefulWidget<ScaffoldWidget> with Dicti
         ),
         body: _body(context),
         floatingActionButton: FloatingActionButton(
-          onPressed: () {
+          onPressed: () async {
+            _getBLEState();
             final cubit = Modular.get<BluetoothCubit>();
             cubit.getBluetoothStatus();
             setState(() {
