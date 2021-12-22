@@ -22,7 +22,9 @@ class BluetoothCubit extends Cubit<BluetoothState> {
   }
 
   void requestCurrentBluetoothState() {
-    emit(BluetoothCurrentState(_currentBluetoothState));
+    Future.delayed(Duration.zero, () {
+      emit(BluetoothCurrentState(_currentBluetoothState));
+    });
   }
 
   void requestBluetooth() async {
