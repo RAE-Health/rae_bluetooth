@@ -2,10 +2,10 @@ import 'package:flutter/widgets.dart';
 
 import '../../rae_bluetooth.dart';
 
-class IOSBluetoothBannerWidget extends StatelessWidget {
+class BluetoothBannerWidget extends StatelessWidget {
   final BluetoothStateEnum iosBluetoothState;
   final Size size;
-  const IOSBluetoothBannerWidget({
+  const BluetoothBannerWidget({
     required this.iosBluetoothState,
     this.size = const Size.square(48.0),
   });

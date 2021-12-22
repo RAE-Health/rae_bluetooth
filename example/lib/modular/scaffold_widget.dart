@@ -102,9 +102,9 @@ class _ScaffoldWidget extends ObservingStatefulWidget<ScaffoldWidget> with Dicti
   List<Widget> _stateButtions() {
     List<Widget> result = [];
     for (BluetoothStateEnum bse in BluetoothStateEnum.values) {
-      result.add(IOSBluetoothBannerWidget(iosBluetoothState: bse, size: Size.square(32.0)));
-      result.add(IOSBluetoothBannerWidget(iosBluetoothState: bse, size: Size.square(48.0)));
-      result.add(IOSBluetoothBannerWidget(iosBluetoothState: bse, size: Size.square(64.0)));
+      result.add(BluetoothBannerWidget(iosBluetoothState: bse, size: Size.square(32.0)));
+      result.add(BluetoothBannerWidget(iosBluetoothState: bse, size: Size.square(48.0)));
+      result.add(BluetoothBannerWidget(iosBluetoothState: bse, size: Size.square(64.0)));
     }
     return result;
   }
