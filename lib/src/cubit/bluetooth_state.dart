@@ -6,3 +6,8 @@ abstract class BluetoothState {}
 class BluetoothInitial extends BluetoothState {}
 
 class BluetoothDeniedState extends BluetoothState {}
+
+class BluetoothCurrentState extends BluetoothState {
+  final BluetoothStateEnum bluetoothStateEnum;
+  BluetoothCurrentState(this.bluetoothStateEnum);
+}
