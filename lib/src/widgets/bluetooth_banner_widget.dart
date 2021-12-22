@@ -27,7 +27,7 @@ class BluetoothBannerWidget extends StatelessWidget {
         result = 'Bluetooth is powered off';
         break;
       case BluetoothStateEnum.unknown:
-        result = 'Bluetooth is unknown';
+        result = 'Bluetooth needs permission';
         break;
       case BluetoothStateEnum.resetting:
         result = 'Bluetooth is resetting';
@@ -59,7 +59,7 @@ class BluetoothBannerWidget extends StatelessWidget {
       case BluetoothStateEnum.poweredOff:
         return BluetoothStatusImageWidget(state: BluetoothStateEnum.poweredOff, size: Size.copy(defaultUseSize));
       case BluetoothStateEnum.unknown:
-        return Text('?', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22.0));
+        return BluetoothStatusImageWidget(state: BluetoothStateEnum.unknown, size: Size.copy(defaultUseSize));
       case BluetoothStateEnum.resetting:
         return Text('R', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22.0));
       case BluetoothStateEnum.unsupported:

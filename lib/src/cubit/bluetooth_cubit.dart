@@ -36,6 +36,37 @@ class BluetoothCubit extends Cubit<BluetoothState> {
     if (_bleStateSubscription == null) {
       _bleStateSubscription = bleStateEventChannel.receiveBroadcastStream().listen((event) {
         debugPrint('BLE EVENT: ${event.toString()}');
+        _currentBluetoothState = BluetoothStateEnumExtension.from(string: event.toString());
+        debugPrint('BLE STATE: ${_currentBluetoothState.toString()}');
+        switch (_currentBluetoothState) {
+          case BluetoothStateEnum.notReceivingData:
+            // TODO: Handle this case.
+            break;
+          case BluetoothStateEnum.poweredOff:
+            // TODO: Handle this case.
+            break;
+          case BluetoothStateEnum.poweredOn:
+            emit(BluetoothPowerOnEvent());
+            return;
+          case BluetoothStateEnum.receivingData:
+            // TODO: Handle this case.
+            break;
+          case BluetoothStateEnum.resetting:
+            // TODO: Handle this case.
+            break;
+          case BluetoothStateEnum.unauthorized:
+            // TODO: Handle this case.
+            break;
+          case BluetoothStateEnum.unknown:
+            // TODO: Handle this case.
+            break;
+          case BluetoothStateEnum.unsupported:
+            // TODO: Handle this case.
+            break;
+        }
+        // Future.delayed(Duration(milliseconds: 250), () {
+        //   emit(BluetoothCurrentState(_currentBluetoothState));
+        // });
       });
     }
   }

@@ -11,3 +11,9 @@ class BluetoothCurrentState extends BluetoothState {
   final BluetoothStateEnum bluetoothStateEnum;
   BluetoothCurrentState(this.bluetoothStateEnum);
 }
+
+class BluetoothPowerOnEvent extends BluetoothState {}
+
+class BluetoothPowerOffEvent extends BluetoothState {}
+
+class BluetoothReceivingDataEvent extends BluetoothState {}
