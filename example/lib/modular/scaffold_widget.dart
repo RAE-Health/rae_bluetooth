@@ -1,7 +1,4 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_extras/flutter_extras.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:rae_bluetooth/rae_bluetooth.dart';
@@ -22,14 +19,14 @@ class _ScaffoldWidget extends ObservingStatefulWidget<ScaffoldWidget> with Dicti
   String instruction = 'Tap + to change the text';
   String instruction2 = 'Tap again';
   bool isFirst = true;
-  static const bleStateEventChannel = EventChannel('com.ltmm.ble/blestatus');
-  StreamSubscription? bleStateSubscription;
+  //static const bleStateEventChannel = EventChannel('com.ltmm.ble/blestatus');
+  // StreamSubscription? bleStateSubscription;
 
-  void _getBLEState() {
-    bleStateSubscription = bleStateEventChannel.receiveBroadcastStream().listen((event) {
-      debugPrint('EVENT: ${event.toString()}');
-    });
-  }
+  // void _getBLEState() {
+  //   bleStateSubscription = bleStateEventChannel.receiveBroadcastStream().listen((event) {
+  //     debugPrint('EVENT: ${event.toString()}');
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) => Scaffold(
@@ -42,7 +39,7 @@ class _ScaffoldWidget extends ObservingStatefulWidget<ScaffoldWidget> with Dicti
         body: _body(context),
         floatingActionButton: FloatingActionButton(
           onPressed: () async {
-            _getBLEState();
+            //_getBLEState();
 
             setState(() {
               isFirst = !isFirst;
@@ -91,9 +88,11 @@ class _ScaffoldWidget extends ObservingStatefulWidget<ScaffoldWidget> with Dicti
               ElevatedButton(onPressed: () => cubit.getBluetoothStatus(), child: Text('Request BLE')),
               SizedBox(width: 8),
             ]),
-            Wrap(
+            Column(
               children: _stateButtions(),
             ),
+            SizedBox(height: 8),
+            Wrap(children: _sizeButton()),
           ],
         ),
       ),
@@ -103,31 +102,41 @@ class _ScaffoldWidget extends ObservingStatefulWidget<ScaffoldWidget> with Dicti
   List<Widget> _stateButtions() {
     List<Widget> result = [];
     for (BluetoothStateEnum bse in BluetoothStateEnum.values) {
-      result.add(SizedBox(width: 2));
+      result.add(IOSBluetoothBannerWidget(iosBluetoothState: bse, size: Size.square(32.0)));
+      result.add(IOSBluetoothBannerWidget(iosBluetoothState: bse, size: Size.square(48.0)));
+      result.add(IOSBluetoothBannerWidget(iosBluetoothState: bse, size: Size.square(64.0)));
+    }
+    return result;
+  }
+
+  List<Widget> _sizeButton() {
+    List<Widget> result = [];
+    for (BluetoothStateEnum bse in BluetoothStateEnum.values) {
+      result.add(SizedBox(height: 2));
       result.add(
         Padding(
           padding: const EdgeInsets.all(4.0),
-          child: BluetoothStatusImage(size: Size.square(48.0), state: bse),
+          child: BluetoothStatusImageWidget(size: Size.square(48.0), state: bse),
         ),
       );
-      result.add(SizedBox(width: 2));
+      result.add(SizedBox(height: 2));
       result.add(
         Padding(
           padding: const EdgeInsets.all(4.0),
-          child: BluetoothStatusImage(size: Size.square(56.0), state: bse),
+          child: BluetoothStatusImageWidget(size: Size.square(56.0), state: bse),
         ),
       );
-      result.add(SizedBox(width: 2));
+      result.add(SizedBox(height: 2));
       result.add(
         Padding(
           padding: const EdgeInsets.all(4.0),
-          child: BluetoothStatusImage(size: Size.square(80.0), state: bse),
+          child: BluetoothStatusImageWidget(size: Size.square(80.0), state: bse),
         ),
       );
       result.add(
         Padding(
           padding: const EdgeInsets.all(4.0),
-          child: BluetoothStatusImage(size: Size.square(128.0), state: bse),
+          child: BluetoothStatusImageWidget(size: Size.square(128.0), state: bse),
         ),
       );
     }

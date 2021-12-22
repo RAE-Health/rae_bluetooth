@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'bluetooth_state_enum.dart';
+import '../bluetooth_state_enum.dart';
 
 const double _scale = 0.35;
 const double _widthScale = 1.15;
@@ -18,7 +18,7 @@ AssetImage get _protectedAsset => AssetImage('assets/protected.png', package: 'r
 AssetImage get _receivingDataAsset => AssetImage('assets/receiving_data.gif', package: 'rae_bluetooth');
 AssetImage get _shieldAsset => AssetImage('assets/shield.png', package: 'rae_bluetooth');
 
-class BluetoothStatusImage extends StatelessWidget {
+class BluetoothStatusImageWidget extends StatelessWidget {
   final Size size;
   final BluetoothStateEnum state;
 
@@ -45,7 +45,7 @@ class BluetoothStatusImage extends StatelessWidget {
         child: _receivingDataImage(),
       );
 
-  const BluetoothStatusImage({required this.state, required this.size});
+  const BluetoothStatusImageWidget({required this.state, required this.size});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -58,22 +58,24 @@ class BluetoothStatusImage extends StatelessWidget {
 
   Widget _dispatch() {
     switch (state) {
-      case BluetoothStateEnum.notPaired:
+      case BluetoothStateEnum.unknown:
         return Stack(children: [_bluetooth(), _detailIcon(_circleQuestionMarkImage())]);
       case BluetoothStateEnum.notReceivingData:
-        return Stack(children: [
-          _bluetooth(),
-          _detailIcon(_noWatchImage()),
-          _detailIcon(_circleCrossImage()),
-        ]);
-      case BluetoothStateEnum.off:
+        return Stack(children: [_bluetooth(), _detailIcon(_noWatchImage()), _detailIcon(_circleCrossImage())]);
+      case BluetoothStateEnum.poweredOff:
         return Stack(children: [_bluetoothOff(), _detailIcon(_circleXImage())]);
-      case BluetoothStateEnum.on:
+      case BluetoothStateEnum.poweredOn:
         return Stack(children: [_bluetooth(), _detailIcon(_checkmarkImage())]);
-      case BluetoothStateEnum.permissionDenied:
+      case BluetoothStateEnum.unauthorized:
         return Stack(children: [_bluetooth(), _protectedAlign()]);
       case BluetoothStateEnum.receivingData:
         return Stack(children: [_paddedReceivingDataImage(), _bluetooth(Colors.white38)]);
+      case BluetoothStateEnum.resetting:
+        // TODO: Handle this case.
+        return Stack(children: [Text('reseting')]);
+      case BluetoothStateEnum.unsupported:
+        // TODO: Handle this case.
+        return Stack(children: [Text('unsupported')]);
     }
   }
 
