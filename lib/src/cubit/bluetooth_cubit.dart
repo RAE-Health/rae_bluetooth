@@ -46,7 +46,7 @@ class BluetoothCubit extends Cubit<BluetoothState> {
             // TODO: Handle this case.
             break;
           case BluetoothStateEnum.poweredOn:
-            emit(BluetoothPowerOnEvent());
+            emit(BluetoothPowerOnState());
             return;
           case BluetoothStateEnum.receivingData:
             // TODO: Handle this case.
