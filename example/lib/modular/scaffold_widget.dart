@@ -58,42 +58,44 @@ class _ScaffoldWidget extends ObservingStatefulWidget<ScaffoldWidget> with Dicti
     final cubit = Modular.get<BluetoothCubit>();
 
     return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Text(lookup(DictionaryEnum.helloWorld, of: context)), //Example of localization
-          Text(
-            message,
-          ),
-          WidgetSize(
-            onChange: (Size size) {
-              setState(() {
-                final height = context.height;
-                final width = context.width;
-                debugPrint('height: $height, width: $width $isFirst');
-                message = 'Size - $size';
-              });
-            },
-            child: Text(
-              isFirst ? instruction : instruction2,
-              style: Theme.of(context).textTheme.headline4,
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text(lookup(DictionaryEnum.helloWorld, of: context)), //Example of localization
+            Text(
+              message,
             ),
-          ),
-          SizedBox(height: 24),
-          Wrap(children: [
-            ElevatedButton(onPressed: () => localeCubit.updateLocale(Locale('en', '')), child: Text('English')),
-            SizedBox(width: 8),
-            ElevatedButton(onPressed: () => localeCubit.updateLocale(Locale('es', '')), child: Text('Spanish')),
-            SizedBox(width: 8),
-            ElevatedButton(onPressed: () => localeCubit.updateLocale(Locale('de', '')), child: Text('German')),
-            SizedBox(width: 8),
-            ElevatedButton(onPressed: () => cubit.getBluetoothStatus(), child: Text('Request BLE')),
-            SizedBox(width: 8),
-          ]),
-          Wrap(
-            children: _stateButtions(),
-          )
-        ],
+            WidgetSize(
+              onChange: (Size size) {
+                setState(() {
+                  final height = context.height;
+                  final width = context.width;
+                  debugPrint('height: $height, width: $width $isFirst');
+                  message = 'Size - $size';
+                });
+              },
+              child: Text(
+                isFirst ? instruction : instruction2,
+                style: Theme.of(context).textTheme.headline4,
+              ),
+            ),
+            SizedBox(height: 24),
+            Wrap(children: [
+              ElevatedButton(onPressed: () => localeCubit.updateLocale(Locale('en', '')), child: Text('English')),
+              SizedBox(width: 8),
+              ElevatedButton(onPressed: () => localeCubit.updateLocale(Locale('es', '')), child: Text('Spanish')),
+              SizedBox(width: 8),
+              ElevatedButton(onPressed: () => localeCubit.updateLocale(Locale('de', '')), child: Text('German')),
+              SizedBox(width: 8),
+              ElevatedButton(onPressed: () => cubit.getBluetoothStatus(), child: Text('Request BLE')),
+              SizedBox(width: 8),
+            ]),
+            Wrap(
+              children: _stateButtions(),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -101,11 +103,33 @@ class _ScaffoldWidget extends ObservingStatefulWidget<ScaffoldWidget> with Dicti
   List<Widget> _stateButtions() {
     List<Widget> result = [];
     for (BluetoothStateEnum bse in BluetoothStateEnum.values) {
-      result.add(SizedBox(width: 8));
-      result.add(Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: BluetoothStatusImage(size: Size.square(80.0), state: bse),
-      ));
+      result.add(SizedBox(width: 2));
+      result.add(
+        Padding(
+          padding: const EdgeInsets.all(4.0),
+          child: BluetoothStatusImage(size: Size.square(48.0), state: bse),
+        ),
+      );
+      result.add(SizedBox(width: 2));
+      result.add(
+        Padding(
+          padding: const EdgeInsets.all(4.0),
+          child: BluetoothStatusImage(size: Size.square(56.0), state: bse),
+        ),
+      );
+      result.add(SizedBox(width: 2));
+      result.add(
+        Padding(
+          padding: const EdgeInsets.all(4.0),
+          child: BluetoothStatusImage(size: Size.square(80.0), state: bse),
+        ),
+      );
+      result.add(
+        Padding(
+          padding: const EdgeInsets.all(4.0),
+          child: BluetoothStatusImage(size: Size.square(128.0), state: bse),
+        ),
+      );
     }
     return result;
   }

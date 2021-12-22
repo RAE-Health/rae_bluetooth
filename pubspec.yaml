@@ -26,6 +26,7 @@ flutter:
   uses-material-design: true
   generate: true
   assets:
+    - assets/accelerometer_abstract.png
     - assets/accelerometer.png
     - assets/bluetooth_denied.png
     - assets/bluetooth_off.png
@@ -33,8 +34,12 @@ flutter:
     - assets/bluetooth.png
     - assets/checkmark.png
     - assets/circle_cross_narrow.png
+    - assets/circle_cross.png
     - assets/circle_question_mark.png
     - assets/circle_x.png
+    - assets/no_data_watch.png
     - assets/no_data.png
+    - assets/no_watch.png
     - assets/notpaired.png
     - assets/receiving_data.gif
+    - assets/transmission.png
