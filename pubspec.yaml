@@ -25,3 +25,16 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   generate: true
+  assets:
+    - assets/accelerometer.png
+    - assets/bluetooth_denied.png
+    - assets/bluetooth_off.png
+    - assets/bluetooth_streaming.png
+    - assets/bluetooth.png
+    - assets/checkmark.png
+    - assets/circle_cross_narrow.png
+    - assets/circle_question_mark.png
+    - assets/circle_x.png
+    - assets/no_data.png
+    - assets/notpaired.png
+    - assets/receiving_data.gif

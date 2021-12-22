@@ -7,6 +7,7 @@
 
 import Foundation
 import Flutter
+import CoreBluetooth
 
 typealias BLEOperationCompletion = ((String?, Error?) -> Void)?
 
@@ -27,11 +28,37 @@ class BLEStatusStreamHandler: NSObject, FlutterStreamHandler {
     }
 }
 
-final class BLEStateOperation: AsyncOperation {
+final class BLEStateOperation: AsyncOperation, CBPeripheralManagerDelegate {
+    
     private let operationCompletion: BLEOperationCompletion
+    var bluetoothPeripheralManager: CBPeripheralManager?
+    
     init(completion: BLEOperationCompletion) {
         self.operationCompletion = completion
         super.init()
+        let options = [CBCentralManagerOptionShowPowerAlertKey:0] //<-this is the magic bit!
+        bluetoothPeripheralManager = CBPeripheralManager(delegate: self, queue: nil, options: options)
+    }
+    
+    func peripheralManagerDidUpdateState(_ peripheral: CBPeripheralManager) {
+        
+        var state: String = ""
+        switch peripheral.state {
+        case .poweredOn:
+            state = "poweredOn"
+        case .poweredOff:
+            state = "poweredOff"
+        case .unknown:
+            state = "unknown"
+        case .resetting:
+            state = "resetting"
+        case .unsupported:
+            state = "unsupported"
+        case .unauthorized:
+            state = "unauthorized"
+        @unknown default: break
+        }
+        (operationCompletion!)(state, nil)
     }
     
 }

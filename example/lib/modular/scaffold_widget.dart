@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_extras/flutter_extras.dart';
@@ -20,18 +22,13 @@ class _ScaffoldWidget extends ObservingStatefulWidget<ScaffoldWidget> with Dicti
   String instruction = 'Tap + to change the text';
   String instruction2 = 'Tap again';
   bool isFirst = true;
-  static const bleState = MethodChannel('bleState.fetch.flutter/state');
+  static const bleStateEventChannel = EventChannel('com.ltmm.ble/blestatus');
+  StreamSubscription? bleStateSubscription;
 
-  Future<void> _getBLEState() async {
-    String state;
-    try {
-      final String result = await bleState.invokeMethod('bleState');
-      state = result;
-    } on PlatformException catch (e) {
-      debugPrint('Failed to get state ${e.message}');
-      state = '?';
-    }
-    debugPrint('STATE $state');
+  void _getBLEState() {
+    bleStateSubscription = bleStateEventChannel.receiveBroadcastStream().listen((event) {
+      debugPrint('EVENT: ${event.toString()}');
+    });
   }
 
   @override
@@ -46,8 +43,7 @@ class _ScaffoldWidget extends ObservingStatefulWidget<ScaffoldWidget> with Dicti
         floatingActionButton: FloatingActionButton(
           onPressed: () async {
             _getBLEState();
-            final cubit = Modular.get<BluetoothCubit>();
-            cubit.getBluetoothStatus();
+
             setState(() {
               isFirst = !isFirst;
             });
@@ -59,6 +55,8 @@ class _ScaffoldWidget extends ObservingStatefulWidget<ScaffoldWidget> with Dicti
 
   Widget _body(BuildContext context) {
     LocaleCubit localeCubit = Modular.get<LocaleCubit>();
+    final cubit = Modular.get<BluetoothCubit>();
+
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -82,16 +80,33 @@ class _ScaffoldWidget extends ObservingStatefulWidget<ScaffoldWidget> with Dicti
             ),
           ),
           SizedBox(height: 24),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              ElevatedButton(onPressed: () => localeCubit.updateLocale(Locale('en', '')), child: Text('English')),
-              ElevatedButton(onPressed: () => localeCubit.updateLocale(Locale('es', '')), child: Text('Spanish')),
-              ElevatedButton(onPressed: () => localeCubit.updateLocale(Locale('de', '')), child: Text('German')),
-            ],
+          Wrap(children: [
+            ElevatedButton(onPressed: () => localeCubit.updateLocale(Locale('en', '')), child: Text('English')),
+            SizedBox(width: 8),
+            ElevatedButton(onPressed: () => localeCubit.updateLocale(Locale('es', '')), child: Text('Spanish')),
+            SizedBox(width: 8),
+            ElevatedButton(onPressed: () => localeCubit.updateLocale(Locale('de', '')), child: Text('German')),
+            SizedBox(width: 8),
+            ElevatedButton(onPressed: () => cubit.getBluetoothStatus(), child: Text('Request BLE')),
+            SizedBox(width: 8),
+          ]),
+          Wrap(
+            children: _stateButtions(),
           )
         ],
       ),
     );
+  }
+
+  List<Widget> _stateButtions() {
+    List<Widget> result = [];
+    for (BluetoothStateEnum bse in BluetoothStateEnum.values) {
+      result.add(SizedBox(width: 8));
+      result.add(Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: BluetoothStatusImage(size: Size.square(80.0), state: bse),
+      ));
+    }
+    return result;
   }
 }
