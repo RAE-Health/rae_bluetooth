@@ -5,7 +5,6 @@ import 'bluetooth_state_enum.dart';
 const double _scale = 0.35;
 const double _widthScale = 1.15;
 
-AssetImage get _accelerometerAsset => AssetImage('assets/no_watch.png', package: 'rae_bluetooth');
 AssetImage get _bluetoothAsset => AssetImage('assets/bluetooth.png', package: 'rae_bluetooth');
 AssetImage get _bluetoothOffAsset => AssetImage('assets/bluetooth_off.png', package: 'rae_bluetooth');
 AssetImage get _bluetoothStreamingAsset => AssetImage('assets/accelerometer.png', package: 'rae_bluetooth');
@@ -14,7 +13,10 @@ AssetImage get _circleCrossAsset => AssetImage('assets/circle_cross.png', packag
 AssetImage get _circleCrossNarrowAsset => AssetImage('assets/circle_cross_narrow.png', package: 'rae_bluetooth');
 AssetImage get _circleQuestionMarkAsset => AssetImage('assets/circle_question_mark.png', package: 'rae_bluetooth');
 AssetImage get _circleXAsset => AssetImage('assets/circle_x.png', package: 'rae_bluetooth');
+AssetImage get _noWatchAsset => AssetImage('assets/no_watch.png', package: 'rae_bluetooth');
+AssetImage get _protectedAsset => AssetImage('assets/protected.png', package: 'rae_bluetooth');
 AssetImage get _receivingDataAsset => AssetImage('assets/receiving_data.gif', package: 'rae_bluetooth');
+AssetImage get _shieldAsset => AssetImage('assets/shield.png', package: 'rae_bluetooth');
 
 class BluetoothStatusImage extends StatelessWidget {
   final Size size;
@@ -23,8 +25,9 @@ class BluetoothStatusImage extends StatelessWidget {
   Align _bluetooth([Color? color]) => Align(alignment: Alignment.centerLeft, child: _bluetoothImage(color));
   Align _bluetoothOff() => Align(alignment: Alignment.centerLeft, child: _bluetoothOffImage());
   Align _receivingData() => Align(alignment: Alignment.centerLeft, child: _receivingDataImage());
+  Align _protectedAlign() => Align(alignment: Alignment.centerLeft, child: _protectedImage());
 
-  Image _accelerometerImage() => Image(image: _accelerometerAsset, color: Colors.green);
+  Image _noWatchImage() => Image(image: _noWatchAsset, color: Colors.green);
   Image _bluetoothImage([Color? color]) => Image(image: _bluetoothAsset, color: color);
   Image _bluetoothOffImage() => Image(image: _bluetoothOffAsset);
   Image _checkmarkImage() => Image(image: _checkmarkAsset, color: Colors.green.shade700);
@@ -34,6 +37,13 @@ class BluetoothStatusImage extends StatelessWidget {
   Image _circleXImage() => Image(image: _circleXAsset, color: Colors.red.shade600);
   Image _receivingDataImage() => Image(image: _receivingDataAsset, width: size.height * _widthScale);
   Image _bluetoothStreamingImage() => Image(image: _bluetoothStreamingAsset);
+  Image _protectedImage() => Image(image: _protectedAsset, color: Colors.red.shade700);
+  Image _shieldImage() => Image(image: _shieldAsset, color: Colors.red);
+
+  Widget _paddedReceivingDataImage() => Padding(
+        padding: const EdgeInsets.all(4.0),
+        child: _receivingDataImage(),
+      );
 
   const BluetoothStatusImage({required this.state, required this.size});
   @override
@@ -53,7 +63,7 @@ class BluetoothStatusImage extends StatelessWidget {
       case BluetoothStateEnum.notReceivingData:
         return Stack(children: [
           _bluetooth(),
-          _detailIcon(_accelerometerImage()),
+          _detailIcon(_noWatchImage()),
           _detailIcon(_circleCrossImage()),
         ]);
       case BluetoothStateEnum.off:
@@ -61,12 +71,10 @@ class BluetoothStatusImage extends StatelessWidget {
       case BluetoothStateEnum.on:
         return Stack(children: [_bluetooth(), _detailIcon(_checkmarkImage())]);
       case BluetoothStateEnum.permissionDenied:
-        // TODO: Handle this case.
-        break;
+        return Stack(children: [_bluetooth(), _protectedAlign()]);
       case BluetoothStateEnum.receivingData:
-        return Stack(children: [_receivingData(), _bluetooth(Colors.white38)]);
+        return Stack(children: [_paddedReceivingDataImage(), _bluetooth(Colors.white38)]);
     }
-    return Text('X');
   }
 
   Align _detailIcon(Widget image) => Align(

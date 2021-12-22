@@ -41,5 +41,7 @@ flutter:
     - assets/no_data.png
     - assets/no_watch.png
     - assets/notpaired.png
+    - assets/protected.png
     - assets/receiving_data.gif
+    - assets/shield.png
     - assets/transmission.png
