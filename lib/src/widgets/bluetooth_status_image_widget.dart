@@ -89,15 +89,4 @@ class BluetoothStatusImageWidget extends StatelessWidget {
           ),
         ),
       );
-
-  // Align _dataTransmissionIcon(Widget image) => Align(
-  //       alignment: Alignment.topRight,
-  //       child: Padding(
-  //         padding: const EdgeInsets.only(left: 3, top: 3, bottom: 3, right: 3),
-  //         child: SizedBox(
-  //           child: image,
-  //           height: size.height * _scale,
-  //         ),
-  //       ),
-  //     );
 }
