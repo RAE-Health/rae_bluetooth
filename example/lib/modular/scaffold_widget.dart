@@ -4,7 +4,6 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:rae_bluetooth/rae_bluetooth.dart';
 import 'package:theme_manager/theme_manager.dart';
 import 'package:xample/cubit/locale_cubit.dart';
-import 'package:xample/l10n/mixin.dart';
 
 class ScaffoldWidget extends StatefulWidget {
   ScaffoldWidget({Key? key, required this.title}) : super(key: key);
@@ -14,20 +13,12 @@ class ScaffoldWidget extends StatefulWidget {
   _ScaffoldWidget createState() => _ScaffoldWidget();
 }
 
-class _ScaffoldWidget extends ObservingStatefulWidget<ScaffoldWidget> with DictionaryEnumMixin {
+class _ScaffoldWidget extends ObservingStatefulWidget<ScaffoldWidget> {
   String message = 'Tap for Size';
   String instruction = 'Tap + to change the text';
   String instruction2 = 'Tap again';
   bool isFirst = true;
-  //static const bleStateEventChannel = EventChannel('com.ltmm.ble/blestatus');
-  // StreamSubscription? bleStateSubscription;
-
-  // void _getBLEState() {
-  //   bleStateSubscription = bleStateEventChannel.receiveBroadcastStream().listen((event) {
-  //     debugPrint('EVENT: ${event.toString()}');
-  //   });
-  // }
-
+  
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
@@ -59,8 +50,7 @@ class _ScaffoldWidget extends ObservingStatefulWidget<ScaffoldWidget> with Dicti
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(lookup(DictionaryEnum.helloWorld, of: context)), //Example of localization
-            Text(
+             Text(
               message,
             ),
             WidgetSize(

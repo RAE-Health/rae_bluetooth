@@ -1,6 +1,6 @@
-name: rae_bluetooth # search/replace all occurances of 'rae_bluetooth' to the new package name
+name: rae_bluetooth
 description: Template for Flutter Package project.
-version: 0.0.9+10
+version: 0.0.9+11
 homepage: http://www.raehealth.com
 publish_to: 'none'
 
@@ -12,10 +12,10 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.4
-  flutter_bloc: ^8.0.0
+  flutter_bloc: ^8.0.1
   flutter_localizations:
     sdk: flutter
-  flutter_modular: ^4.2.0
+  flutter_modular: ^4.3.0
   intl: ^0.17.0
   permission_handler: ^8.3.0
 
