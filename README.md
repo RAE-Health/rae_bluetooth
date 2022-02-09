@@ -1,6 +1,6 @@
 # rae_bluetooth
 
-This is a template for the README.md. Replace the *README.md* with this, and fill in empty/missing details.
+Gets the state/status of a phone's bluetooth.
 
 ## Install
 
