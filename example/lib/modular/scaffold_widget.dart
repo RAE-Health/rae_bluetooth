@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_extras/flutter_extras.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:rae_bluetooth/rae_bluetooth.dart';
-import 'package:theme_manager/theme_manager.dart';
+import 'package:theme_management/theme_management.dart';
 import 'package:xample/cubit/locale_cubit.dart';
 
 class ScaffoldWidget extends StatefulWidget {
@@ -18,7 +18,7 @@ class _ScaffoldWidget extends ObservingStatefulWidget<ScaffoldWidget> {
   String instruction = 'Tap + to change the text';
   String instruction2 = 'Tap again';
   bool isFirst = true;
-  
+
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
@@ -50,7 +50,7 @@ class _ScaffoldWidget extends ObservingStatefulWidget<ScaffoldWidget> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-             Text(
+            Text(
               message,
             ),
             WidgetSize(

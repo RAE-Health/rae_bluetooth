@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:theme_manager/theme_manager.dart';
 import 'package:xample/cubit/locale_cubit.dart';
 
 class ThemeAndMaterialWidget extends StatelessWidget {

@@ -26,9 +26,9 @@ dependencies:
     sdk: flutter
   flutter_modular: ^4.2.0
   intl: ^0.17.0
-  theme_manager:
+  theme_management:
     git:
-      url: https://github.com/GitHubStuff/theme_manager
+      url: https://github.com/GitHubStuff/theme_management
 
 dependency_overrides: null
 
