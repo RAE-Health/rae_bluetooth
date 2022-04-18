@@ -10,7 +10,7 @@ environment:
 dependencies:
   app_exception:
     git:
-      url: https://github.com/GitHubStuff/flutter_packages.git
+      url: git@github.com:RAE-Health/flutter_packages.git
       path: app_exception
   cupertino_icons: ^1.0.4
   rae_bluetooth:
@@ -20,7 +20,7 @@ dependencies:
   flutter_bloc: ^8.0.0
   flutter_extras:
     git:
-      url: https://github.com/GitHubStuff/flutter_packages.git
+      url: git@github.com:RAE-Health/flutter_packages.git
       path: flutter_extras
   flutter_localizations:
     sdk: flutter
@@ -28,7 +28,7 @@ dependencies:
   intl: ^0.17.0
   theme_management:
     git:
-      url: https://github.com/GitHubStuff/theme_management
+      url: git@github.com:RAE-Health/theme_management
 
 dependency_overrides: null
 
