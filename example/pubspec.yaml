@@ -24,7 +24,7 @@ dependencies:
       path: flutter_extras
   flutter_localizations:
     sdk: flutter
-  flutter_modular: ^4.2.0
+  flutter_modular: ^5.0.2
   intl: ^0.17.0
   theme_management:
     git:
